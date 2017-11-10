@@ -4,7 +4,7 @@ alert("-----------RULES--------------")
 
 
 var player_position = { x: 5, y: 5}
-
+var enemy_position = { x:Math.floor(Math.random()*5)*100+5, y:Math.floor(Math.random()*5)*100+5}
 
 w = 600;
 h = 400;
@@ -37,6 +37,10 @@ function draw_player(x, y) {
 	ctx.fillRect(x, y, 90, 90);
 };
 
+function draw_enemy(x, y) {
+	ctx.fillStyle = 'red';
+	ctx.fillRect(x, y, 90, 90);
+};
 
 var firstKill = prompt("")
 if (firstKill == "high b"){
@@ -44,6 +48,7 @@ if (firstKill == "high b"){
 }
 
 draw_player(5,5)
+draw_enemy(enemy_position.x,enemy_position.y)
 
 function move(e){
 	//left
@@ -51,6 +56,7 @@ function move(e){
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.x -= 100
+		draw_enemy(enemy_position.x,enemy_position.y)
 		
 		if (player_position.x<0) {
 			player_position.x = 5;
@@ -61,6 +67,7 @@ function move(e){
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.x += 100
+		draw_enemy(enemy_position.x,enemy_position.y)
 
 		if (player_position.x>500) {
 			player_position.x = 405;
@@ -71,6 +78,7 @@ function move(e){
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.y += 100
+		draw_enemy(enemy_position.x,enemy_position.y)
 
 		if (player_position.y>500) {
 			player_position.y = 405;
@@ -81,6 +89,7 @@ function move(e){
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.y -= 100
+		draw_enemy(enemy_position.x,enemy_position.y)
 
 		if (player_position.y<0) {
 			player_position.y = 5;
