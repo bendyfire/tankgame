@@ -1,7 +1,4 @@
 
-alert("_______WELCOME TO ?????_______")
-alert("-----------RULES--------------")
-
 
 var player_position = { x: 5, y: 5}
 var enemy_position = { x:Math.floor(Math.random()*5)*100+5, y:Math.floor(Math.random()*5)*100+5}
