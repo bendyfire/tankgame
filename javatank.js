@@ -5,6 +5,7 @@ alert("-----------RULES--------------")
 
 var player_position = { x: 5, y: 5}
 
+
 w = 600;
 h = 400;
 var canvas = document.getElementById("myCanvas");
@@ -50,26 +51,43 @@ function move(e){
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.x -= 100
+		
+		if (player_position.x<0) {
+			player_position.x = 5;
+		}
 	}
 	//right
 	if(e.keyCode == 39) {
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.x += 100
+
+		if (player_position.x>500) {
+			player_position.x = 405;
+		}
 	}
 	//down
 	if(e.keyCode == 40) { 
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.y += 100
+
+		if (player_position.y>500) {
+			player_position.y = 405;
+		}
 	}
 	//up
 	if(e.keyCode == 38) {
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.y -= 100
+
+		if (player_position.y<0) {
+			player_position.y = 5;
+		}
 	}
 	draw_player( player_position.x, player_position.y);
+
 }
 
 document.onkeydown = move;
