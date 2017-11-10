@@ -2,6 +2,9 @@
 alert("_______WELCOME TO ?????_______")
 alert("-----------RULES--------------")
 
+
+var player_position = { x: 5, y: 5}
+
 w = 600;
 h = 400;
 var canvas = document.getElementById("myCanvas");
@@ -28,10 +31,45 @@ var drawGrid = function(w, h) {
 };
     drawGrid(500, 500);
 
-ctx.fillStyle = 'green';
-ctx.fillRect(5, 5, 90, 90);
+function draw_player(x, y) {
+	ctx.fillStyle = 'green';
+	ctx.fillRect(x, y, 90, 90);
+};
+
 
 var firstKill = prompt("")
 if (firstKill == "high b"){
 	alert("You Hit The Tank!")
 }
+
+draw_player(5,5)
+
+function move(e){
+	//left
+	if(e.keyCode == 37) { 
+		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
+		drawGrid(500,500);
+		player_position.x -= 100
+	}
+	//right
+	if(e.keyCode == 39) {
+		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
+		drawGrid(500,500);
+		player_position.x += 100
+	}
+	//down
+	if(e.keyCode == 40) { 
+		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
+		drawGrid(500,500);
+		player_position.y += 100
+	}
+	//up
+	if(e.keyCode == 38) {
+		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
+		drawGrid(500,500);
+		player_position.y -= 100
+	}
+	draw_player( player_position.x, player_position.y);
+}
+
+document.onkeydown = move;
