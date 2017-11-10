@@ -7,10 +7,7 @@ h = 400;
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
-var firstKill = prompt("")
-if (firstKill == "high b"){
-	alert("You Hit The Tank!")
-}
+
 
 var drawGrid = function(w, h) {
     ctx.canvas.width  = w;
@@ -32,4 +29,9 @@ var drawGrid = function(w, h) {
     drawGrid(500, 500);
 
 ctx.fillStyle = 'green';
-ctx.fillRect(10, 10, 100, 100);
+ctx.fillRect(5, 5, 90, 90);
+
+var firstKill = prompt("")
+if (firstKill == "high b"){
+	alert("You Hit The Tank!")
+}
