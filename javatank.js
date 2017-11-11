@@ -7,6 +7,9 @@ w = 600;
 h = 400;
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+var scoreDiv = document.getElementById("score")
+
+
 
 
 
@@ -96,3 +99,22 @@ function move(e){
 }
 
 document.onkeydown = move;
+
+var level = {
+	1: 0,
+	2: 1000,
+	3: 2000,
+	4: 3000,
+	5: 4000}
+function get_level(points){
+    for (level in levels){
+       if (points < levels[level]){
+          return level - 1;
+       }
+    }
+}
+function getLevel(point){
+	var level = -1 + Math.sqrt(4 + points/20);
+	scoreDiv.innerHTML = "Score : " + points;
+	return Math.floor(level);
+}
