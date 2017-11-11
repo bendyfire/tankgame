@@ -2,6 +2,10 @@
 
 var player_position = { x: 5, y: 5}
 var enemy_position = { x:Math.floor(Math.random()*5)*100+5, y:Math.floor(Math.random()*5)*100+5}
+var enemies = [];
+
+enemies.append(enemy)
+
 
 w = 600;
 h = 400;
@@ -49,13 +53,15 @@ function draw_player(x, y) {
 function draw_enemy(x, y) {
 	var img = new Image();
 	img.src = 'photos/badTank.png';
-	ctx.drawImage(img, x, y, 90, 90)
-};
+	ctx.drawImage(img, x, y, 90, 90)};
 
 
 
 draw_player(5,5)
-draw_enemy(enemy_position.x,enemy_position.y)
+
+for (var i = 0; i < numEnemies; i++) Math.floor(Math.random()) {
+	draw_enemy(enemy_position.x,enemy_position.y)
+}
 
 function move(e){
 	//left
