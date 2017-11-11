@@ -1,3 +1,26 @@
+var images = [];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+
+//-- usage --//
+preload(
+    "photos/goodTank.png",
+    "photos/goodTank left.png",
+    "photos/New Piskel (4).png",
+    "photos/New Piskel (6).png",
+    "photos/badTank.png",
+    "photos/badTank clone.png",
+    "photos/New Piskel (7).png",
+    "photos/New Piskel (8).png",
+    "photos/New Piskel (2).png"
+)
+
+
+
 var health = 10
 var ammo = 20
 var player_position = { x: 5, y: 5}
