@@ -2,9 +2,9 @@
 
 var player_position = { x: 5, y: 5}
 var enemy_position = { x:Math.floor(Math.random()*5)*100+5, y:Math.floor(Math.random()*5)*100+5}
-var enemies = [];
+//var enemies = [];
 
-enemies.append(enemy)
+//enemies.append(enemy)
 
 
 w = 600;
@@ -59,9 +59,9 @@ function draw_enemy(x, y) {
 
 draw_player(5,5)
 
-for (var i = 0; i < numEnemies; i++) Math.floor(Math.random()) {
-	draw_enemy(enemy_position.x,enemy_position.y)
-}
+//for (var i = 0; i < numEnemies; i++) Math.floor(Math.random()) {
+draw_enemy(enemy_position.x,enemy_position.y)
+//};
 
 function move(e){
 	//left
