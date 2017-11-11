@@ -2,3 +2,12 @@ body {
 	background-color:#182259;
 }
 
+#logo {
+	height:100px;
+	width:300px;
+}
+
+#score, #ammo, #health{
+	color:#A0522D;
+	font-size:20px;
+}
