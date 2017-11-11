@@ -9,7 +9,11 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var scoreDiv = document.getElementById("score")
 
-
+function background() {
+	var img = new Image();
+	img.src = 'photos/New Piskel (2).png'
+	ctx.drawImage(img, 0, 0, 500, 500)
+}
 
 var image = document.getElementById('source');
 
@@ -20,6 +24,7 @@ var drawGrid = function(w, h) {
     ctx.canvas.width  = w;
     ctx.canvas.height = h;
 
+    background();
 
     for (x=0;x<=w;x+=100) {
         for (y=0;y<=h;y+=100) {
@@ -42,8 +47,9 @@ function draw_player(x, y) {
 };
 
 function draw_enemy(x, y) {
-	ctx.fillStyle = 'red';
-	ctx.fillRect(x, y, 90, 90);
+	var img = new Image();
+	img.src = 'photos/badTank.png';
+	ctx.drawImage(img, x, y, 90, 90)
 };
 
 
@@ -120,3 +126,4 @@ function getLevel(point){
 	scoreDiv.innerHTML = "Score : " + points;
 	return Math.floor(level);
 }
+
