@@ -13,7 +13,7 @@ var scoreDiv = document.getElementById("score")
 
 var image = document.getElementById('source');
 
-ctx.drawImage(image, 33, 71, 104, 124, 21, 20, 87, 104);
+
 
 
 var drawGrid = function(w, h) {
@@ -37,8 +37,8 @@ var drawGrid = function(w, h) {
 
 function draw_player(x, y) {
 	var img = new Image();
-	img.src = 'photos/goodTanks.png';
-	ctx.drawImage(img, 0, 0, 90, 90)
+	img.src = 'photos/goodTank.png';
+	ctx.drawImage(img, x, y, 90, 90)
 };
 
 function draw_enemy(x, y) {
