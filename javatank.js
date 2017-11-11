@@ -20,7 +20,7 @@ preload(
 )
  
 
-alert ('HOW TO PLAY:  move your tank around the screen to find the hidden tanks.  when you encounter an enemy tank,  it will have an armor level of 1, 2, or 3. you must decide on how much bullets to use on that tank.  1 bullet will kill level 1 tank, 2 kill level 2, and so forth.  If you enter a number that is lower than the enemy tanks level, you will lose 2 heath and the tank will flee.  If you run out of health or run out of ammo than you lose.  each tank kill will give you 100 points and the goal is to get as many points as possible before you die.')
+alert ('HOW TO PLAY:  move your tank around the screen to find the hidden tanks.  when you encounter an enemy tank,  it will have an armor level of 1, 2, or 3. you must decide on how much bullets to use on that tank.  1 bullet will kill level 1 tank, 2 kill level 2, and so forth.  If you enter a number that is lower than the enemy tanks level, you will lose 2 heath and the tank will flee.  If you run out of health or run out of ammo than you lose.  each tank kill will give you 100 points and the goal is to get as many points as possible before you die.  If the time runs out before you are able to find a tank and input a number, than you will also die.')
 
 
 var health = 10
