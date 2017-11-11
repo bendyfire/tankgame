@@ -4,7 +4,7 @@ var player_position = { x: 5, y: 5}
 var enemy_position = {
 	x:Math.floor(Math.random()*5)*100+5,
 	y:Math.floor(Math.random()*5)*100+5,
-	armor:Math.floor(Math.random()*3)
+	armor:Math.floor(Math.random()*4)
 }
 
 
@@ -122,7 +122,7 @@ function move(e){
 		console.log(attack.value)
 		if (attack.value >= enemy_position.armor){
 			alert("You killed the enemy tank!")
-
+			//trummpss wallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
 		}
 	}
 
@@ -213,7 +213,7 @@ function move(e){
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
 			player_position.y += 100;
 			draw_enemydown(enemy_position.x,enemy_position.y)
-			document.getElementById("p1").innerHTML = "enter ammo";
+			document.getElementById("p1").innerHTML = "Enter Ammo";
 			attack.addEventListener
 			if (attack.value >= enemy_position.armor){
 				score += 100
