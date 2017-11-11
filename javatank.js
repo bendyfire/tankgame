@@ -18,7 +18,9 @@ preload(
     "photos/New Piskel (8).png",
     "photos/New Piskel (2).png"
 )
+ 
 
+alert ('HOW TO PLAY:  move your tank around the screen to find the hidden tanks.  when you encounter an enemy tank,  it will have an armor level of 1, 2, or 3. you must decide on how much bullets to use on that tank.  1 bullet will kill level 1 tank, 2 kill level 2, and so forth.  If you enter a number that is lower than the enemy tanks level, you will lose 2 heath and the tank will flee.  If you run out of health or run out of ammo than you lose.  each tank kill will give you 100 points and the goal is to get as many points as possible before you die.')
 
 
 var health = 10
@@ -29,6 +31,11 @@ var enemy_position = {
 	y:Math.floor(Math.random()*5)*100+5,
 	armor:Math.ceil(Math.random()*3)
 }
+//var ammobox_position = {
+//	x:Math.floor(Math.random()*5)*100+5,
+//	y:Math.floor(Math.random()*5)*100+5,
+
+//}
 
 
 
@@ -41,8 +48,10 @@ var ctx = canvas.getContext("2d");
 var scoreDiv = document.getElementById("score");
 var ammoDiv = document.getElementById("ammo");
 var healthDiv = document.getElementById("health");
+var timeDiv = document.getElementById("time");
 var attack = document.getElementById("attack");
 var score = 0
+var time = 10
 
 function background() {
 	var img = new Image();
@@ -55,6 +64,7 @@ function teleport(){
 	enemy_position.x = Math.floor(Math.random()*5)*100+5
 	enemy_position.y = Math.floor(Math.random()*5)*100+5
 	enemy_position.armor = Math.ceil(Math.random()*3) 
+	time = 10
 }
 
 var image = document.getElementById('source');
@@ -130,12 +140,16 @@ function draw_enemydown(x, y) {
 	ctx.drawImage(img, x, y, 90, 90)
 };
 
-
+//function draw_ammobox(x, y){
+//	var img = new Image();
+//	img.src = 'photos/New Piskel.png';
+//	ctx.drawImage(img, x, y, 90, 90)
+//}
 
 
 draw_player(5,5)
 
-
+//draw_ammobox(ammobox_position.x, ammobox_position.y)
 //for (var i = 0; i < numEnemies; i++) Math.floor(Math.random()) {
 
 //};
@@ -146,10 +160,10 @@ function move(e){
 	if(e.keyCode == 13) { 
 		console.log(attack.value)
 		av = attack.value
+		console.log(av, enemy_position.armor)
 		if (av >= enemy_position.armor){
 			alert("You killed the enemy tank!")
 			attack.value = ""
-			teleport()
 			score += 100
 			scoreDiv.innerHTML = 'Score: ' + score;
 			ammo -= av
@@ -157,41 +171,30 @@ function move(e){
 			attack.style.visibility = "hidden"
 			document.getElementById("p1").innerHTML = "";
 		}
+		console.log(av, enemy_position.armor)
 		if (av < enemy_position.armor) {
 			alert("The enemy's armor was greater than your firepower! you lose 2 health!")
 			ammo -= av
 			ammoDiv.innerHTML = 'Ammo: ' + ammo;
 			health -= 2
 			healthDiv.innerHTML = 'Health: ' + health;
-			teleport()
 			attack.style.visibility = "hidden"
 			document.getElementById("p1").innerHTML = "";
 		}
+		
+		teleport()
+		
 		if (ammo <= 0) {
 			alert ("You ran out of ammo! game over! Your score was: " + score)
-			score == 0
-			ammo == 20
-			health == 10
-			player_position(5,5)
-			teleport()
-			attack.style.visibility = "hidden"
-			document.getElementById("p1").innerHTML = "";
+			document.location.reload();
 		}
 		if (health <= 0) {
 			alert ("You ran out of health! game over! Your score was: " + score)
-			score == 0
-			ammo == 20
-			health == 10
-			player_position(5,5)
-			teleport()
-			attack.style.visibility = "hidden"
-			document.getElementById("p1").innerHTML = "";
+			document.location.reload();
 		}
-
-
 			//trummpss wallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
 	}
-
+	//left
 	if(e.keyCode == 37) {
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
@@ -204,6 +207,13 @@ function move(e){
 			attack.addEventListener
 			attack.style.visibility = "visible"
 		}
+		//if (player_position.x == ammobox_position.x && player_position.y == ammobox_position.y) {
+		//	player_position.x += 100;
+		//	draw_ammobox(ammobox_position.x, ammobox_position.y)
+		//	alert('you picked up an ammo box! + 5 ammo')
+		//	ammo += 5
+		//	ammoDiv.innerHTML = 'Ammo: ' + ammo;
+		//}
 
 		if (player_position.x<0) {
 			player_position.x = 5;
@@ -224,7 +234,13 @@ function move(e){
 			attack.addEventListener
 			attack.style.visibility = "visible"
 		}
-
+		//if (player_position.x == ammobox_position.x && player_position.y == ammobox_position.y) {
+		//	player_position.x -= 100;
+		//	draw_ammobox(ammobox_position.x, ammobox_position.y)
+		//	alert('you picked up an ammo box! + 5 ammo')
+		//	ammo += 5
+		//	ammoDiv.innerHTML = 'Ammo: ' + ammo;
+		//}
 		if (player_position.x>500) {
 			player_position.x = 405;
 		}
@@ -247,6 +263,13 @@ function move(e){
 			attack.addEventListener
 			attack.style.visibility = "visible"
 		}	
+		//if (player_position.x == ammobox_position.x && player_position.y == ammobox_position.y) {
+		//	player_position.x -= 100;
+		//	draw_ammobox(ammobox_position.x, ammobox_position.y)
+		//	alert('you picked up an ammo box! + 5 ammo')
+		//	ammo += 5
+		//	ammoDiv.innerHTML = 'Ammo: ' + ammo;
+		//}
 		if (player_position.y>500) {
 			player_position.y = 405;
 
@@ -267,19 +290,34 @@ function move(e){
 			attack.addEventListener
 			attack.style.visibility = "visible"
 		}
-
+		//if (player_position.x == ammobox_position.x && player_position.y == ammobox_position.y) {
+		//	player_position.x += 100;
+		//	draw_ammobox(ammobox_position.x, ammobox_position.y)
+		//	alert('you picked up an ammo box! + 5 ammo')
+		//	ammo += 5
+		//	ammoDiv.innerHTML = 'Ammo: ' + ammo;
+		//}
 		if (player_position.y<0) {
 			player_position.y = 5;
 		}
 		draw_playerup( player_position.x, player_position.y);
 	}
 
-
 }
 
 
 
 document.onkeydown = move;
+
+setInterval(function(){
+	time -= 1;
+	timeDiv.innerHTML = 'Time: ' + time;
+		if (time == 0) {
+			alert ("You ran out of time! game over! Your score was: " + score)
+			document.location.reload();
+		}
+
+}, 1000);
 
 
 

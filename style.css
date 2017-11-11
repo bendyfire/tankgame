@@ -7,7 +7,7 @@ body {
 	width:300px;
 }
 
-#score, #ammo, #health, #p1{
+#score, #ammo, #health, #p1, #time{
 	color:#A0522D;
 	font-size:20px;
 	margin: 0 20px;
