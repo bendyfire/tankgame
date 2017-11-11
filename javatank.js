@@ -130,6 +130,9 @@ function move(e){
 			score += 100
 			scoreDiv.innerHTML = 'Score: ' + score;
 			ammo -= av
+			ammoDiv.innerHTML = 'Ammo: ' + ammo;
+			attack.style.visibility = "hidden"
+			document.getElementById("p1").innerHTML = "";
 		}
 		if (av < enemy_position.armor) {
 			alert("The enemy's armor was greater than your firepower! you lose 2 health!")
@@ -138,6 +141,28 @@ function move(e){
 			health -= 2
 			healthDiv.innerHTML = 'Health: ' + health;
 			teleport()
+			attack.style.visibility = "hidden"
+			document.getElementById("p1").innerHTML = "";
+		}
+		if (ammo <= 0) {
+			alert ("You ran out of ammo! game over! Your score was: " + score)
+			score == 0
+			ammo == 20
+			health == 10
+			player_position(5,5)
+			teleport()
+			attack.style.visibility = "hidden"
+			document.getElementById("p1").innerHTML = "";
+		}
+		if (health <= 0) {
+			alert ("You ran out of health! game over! Your score was: " + score)
+			score == 0
+			ammo == 20
+			health == 10
+			player_position(5,5)
+			teleport()
+			attack.style.visibility = "hidden"
+			document.getElementById("p1").innerHTML = "";
 		}
 
 
@@ -154,7 +179,7 @@ function move(e){
 			draw_enemyright(enemy_position.x,enemy_position.y)
 			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.addEventListener
-
+			attack.style.visibility = "visible"
 		}
 
 		if (player_position.x<0) {
@@ -174,6 +199,7 @@ function move(e){
 			draw_enemyleft(enemy_position.x,enemy_position.y)
 			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.addEventListener
+			attack.style.visibility = "visible"
 		}
 
 		if (player_position.x>500) {
@@ -196,6 +222,7 @@ function move(e){
 			draw_enemyup(enemy_position.x,enemy_position.y)
 			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.addEventListener
+			attack.style.visibility = "visible"
 		}	
 		if (player_position.y>500) {
 			player_position.y = 405;
@@ -215,6 +242,7 @@ function move(e){
 			draw_enemydown(enemy_position.x,enemy_position.y)
 			document.getElementById("p1").innerHTML = "Enter Ammo";
 			attack.addEventListener
+			attack.style.visibility = "visible"
 		}
 
 		if (player_position.y<0) {
