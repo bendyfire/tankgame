@@ -15,7 +15,9 @@ w = 600;
 h = 400;
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var scoreDiv = document.getElementById("score")
+var scoreDiv = document.getElementById("score");
+var ammoDiv = document.getElementById("ammo");
+var healthDiv = document.getElementById("health");
 var attack = document.getElementById("attack");
 var score = 0
 
@@ -120,16 +122,26 @@ function move(e){
 	//left
 	if(e.keyCode == 13) { 
 		console.log(attack.value)
-		if (attack.value >= enemy_position.armor){
+		av = attack.value
+		if (av >= enemy_position.armor){
 			alert("You killed the enemy tank!")
 			attack.value = ""
 			teleport()
 			score += 100
 			scoreDiv.innerHTML = 'Score: ' + score;
+			ammo -= av
+		}
+		if (av < enemy_position.armor) {
+			alert("The enemy's armor was greater than your firepower! you lose 2 health!")
+			ammo -= av
+			ammoDiv.innerHTML = 'Ammo: ' + ammo;
+			health -= 2
+			healthDiv.innerHTML = 'Health: ' + health;
+			teleport()
+		}
 
 
 			//trummpss wallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
-		}
 	}
 
 	if(e.keyCode == 37) {
@@ -142,12 +154,6 @@ function move(e){
 			draw_enemyright(enemy_position.x,enemy_position.y)
 			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.addEventListener
-			if (attack.value >= enemy_position.armor){
-				score += 100
-				scoreDiv.innerHTML = 'Score: ' + score;
-				draw_enemyleft(enemy_position.x, enemy_position.y)
-				teleport()
-			}
 
 		}
 
@@ -168,12 +174,6 @@ function move(e){
 			draw_enemyleft(enemy_position.x,enemy_position.y)
 			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.addEventListener
-			if (attack.value >= enemy_position.armor){
-				score += 100
-				scoreDiv.innerHTML = 'Score: ' + score;
-				draw_enemyleft(enemy_position.x, enemy_position.y)
-				teleport()
-			}
 		}
 
 		if (player_position.x>500) {
@@ -196,12 +196,6 @@ function move(e){
 			draw_enemyup(enemy_position.x,enemy_position.y)
 			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.addEventListener
-			if (attack.value >= enemy_position.armor){
-				score += 100
-				scoreDiv.innerHTML = 'Score: ' + score;
-				draw_enemyleft(enemy_position.x, enemy_position.y)
-				teleport()
-			}
 		}	
 		if (player_position.y>500) {
 			player_position.y = 405;
@@ -221,12 +215,6 @@ function move(e){
 			draw_enemydown(enemy_position.x,enemy_position.y)
 			document.getElementById("p1").innerHTML = "Enter Ammo";
 			attack.addEventListener
-			if (attack.value >= enemy_position.armor){
-				score += 100
-				scoreDiv.innerHTML = 'Score: ' + score;
-				draw_enemyleft(enemy_position.x, enemy_position.y)
-				teleport()
-			}
 		}
 
 		if (player_position.y<0) {
