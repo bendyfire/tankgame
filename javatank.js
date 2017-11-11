@@ -74,9 +74,21 @@ function draw_playerdown(x, y) {
 	ctx.drawImage(img, x, y, 90, 90)
 };
 
-function draw_enemy(x, y) {
+function draw_enemyleft(x, y) {
 	var img = new Image();
 	img.src = 'photos/badTank.png';
+	ctx.drawImage(img, x, y, 90, 90)};
+function draw_enemyright(x, y) {
+	var img = new Image();
+	img.src = 'photos/badTank clone.png';
+	ctx.drawImage(img, x, y, 90, 90)};
+function draw_enemyup(x, y) {
+	var img = new Image();
+	img.src = 'photos/New Piskel (7).png';
+	ctx.drawImage(img, x, y, 90, 90)};
+function draw_enemydown(x, y) {
+	var img = new Image();
+	img.src = 'photos/New Piskel (8).png';
 	ctx.drawImage(img, x, y, 90, 90)};
 
 
@@ -97,7 +109,7 @@ function move(e){
 
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
 			player_position.x += 100;
-			draw_enemy(enemy_position.x,enemy_position.y)
+			draw_enemyright(enemy_position.x,enemy_position.y)
 			attack.value
 			document.getElementById("p1").innerHTML = "New text!";
 
@@ -117,7 +129,7 @@ function move(e){
 
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
 			player_position.x -= 100;
-			draw_enemy(enemy_position.x,enemy_position.y)
+			draw_enemyleft(enemy_position.x,enemy_position.y)
 			attack.value
 			document.getElementById("p1").innerHTML = "New text!";
 
@@ -136,7 +148,7 @@ function move(e){
 
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
 			player_position.y -= 100;
-			draw_enemy(enemy_position.x,enemy_position.y)
+			draw_enemyup(enemy_position.x,enemy_position.y)
 			attack.value
 			document.getElementById("p1").innerHTML = "New text!";
 		}	
@@ -153,7 +165,7 @@ function move(e){
 		player_position.y -= 100
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
 			player_position.y += 100;
-			draw_enemy(enemy_position.x,enemy_position.y)
+			draw_enemydown(enemy_position.x,enemy_position.y)
 			attack.value
 			document.getElementById("p1").innerHTML = "New text!";
 			}
