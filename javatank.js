@@ -162,7 +162,7 @@ function move(e){
 		av = attack.value
 		console.log(av, enemy_position.armor)
 		if (av >= enemy_position.armor){
-			alert("You killed the enemy tank!")
+			alert("You killed the enemy tank! enemy tanks level was " + enemy_position.armor)
 			attack.value = ""
 			score += 100
 			scoreDiv.innerHTML = 'Score: ' + score;
@@ -173,7 +173,7 @@ function move(e){
 		}
 		console.log(av, enemy_position.armor)
 		if (av < enemy_position.armor) {
-			alert("The enemy's armor was greater than your firepower! you lose 2 health!")
+			alert("The enemy's armor was greater than your firepower! you lose 2 health!  enemy tanks level was "+ enemy_position.armor)
 			ammo -= av
 			ammoDiv.innerHTML = 'Ammo: ' + ammo;
 			health -= 2
