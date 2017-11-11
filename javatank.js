@@ -35,8 +35,7 @@ var drawGrid = function(w, h) {
 function draw_player(x, y) {
 	var img = new Image();
 	img.src = 'photos/goodTanks.png';
-	ctx.drawImage(img,x,y)
-
+	ctx.drawImage(img, 0, 0, 90, 90)
 };
 
 function draw_enemy(x, y) {
