@@ -50,6 +50,24 @@ function draw_player(x, y) {
 	ctx.drawImage(img, x, y, 90, 90)
 };
 
+function draw_playerleft(x, y) {
+	var img = new Image();
+	img.src = 'photos/goodTank left.png';
+	ctx.drawImage(img, x, y, 90, 90)
+};
+
+function draw_playerup(x, y) {
+	var img = new Image();
+	img.src = 'photos/New Piskel (4).png';
+	ctx.drawImage(img, x, y, 90, 90)
+};
+
+function draw_playerdown(x, y) {
+	var img = new Image();
+	img.src = 'photos/New Piskel (6).png';
+	ctx.drawImage(img, x, y, 90, 90)
+};
+
 function draw_enemy(x, y) {
 	var img = new Image();
 	img.src = 'photos/badTank.png';
@@ -66,14 +84,21 @@ draw_enemy(enemy_position.x,enemy_position.y)
 function move(e){
 	//left
 	if(e.keyCode == 37) { 
+
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.x -= 100
 		draw_enemy(enemy_position.x,enemy_position.y)
-		
+		console.log(player_position, enemy_position)
+		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
+			alert ('you got hit')
+		}
+				
 		if (player_position.x<0) {
 			player_position.x = 5;
 		}
+		draw_playerleft( player_position.x, player_position.y);
+
 	}
 	//right
 	if(e.keyCode == 39) {
@@ -81,10 +106,14 @@ function move(e){
 		drawGrid(500,500);
 		player_position.x += 100
 		draw_enemy(enemy_position.x,enemy_position.y)
+		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
+			alert ('you got hit')
+		}
 
 		if (player_position.x>500) {
 			player_position.x = 405;
 		}
+		draw_player( player_position.x, player_position.y);
 	}
 	//down
 	if(e.keyCode == 40) { 
@@ -92,10 +121,14 @@ function move(e){
 		drawGrid(500,500);
 		player_position.y += 100
 		draw_enemy(enemy_position.x,enemy_position.y)
-
+		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
+			alert ('you got hit')
+		}	
 		if (player_position.y>500) {
 			player_position.y = 405;
+
 		}
+		draw_playerdown( player_position.x, player_position.y);
 	}
 	//up
 	if(e.keyCode == 38) {
@@ -103,12 +136,16 @@ function move(e){
 		drawGrid(500,500);
 		player_position.y -= 100
 		draw_enemy(enemy_position.x,enemy_position.y)
+		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
+			alert ('you got hit')
+		}
 
 		if (player_position.y<0) {
 			player_position.y = 5;
 		}
+		draw_playerup( player_position.x, player_position.y);
 	}
-	draw_player( player_position.x, player_position.y);
+	
 
 }
 
