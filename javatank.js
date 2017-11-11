@@ -1,13 +1,13 @@
 var health = 10
 var ammo = 20
 var player_position = { x: 5, y: 5}
-var enemy_position = { x:Math.floor(Math.random()*5)*100+5, y:Math.floor(Math.random()*5)*100+5}
-
-function enemy() {
-	this.x = 0
-	this.y = 0
+var enemy_position = {
+	x:Math.floor(Math.random()*5)*100+5,
+	y:Math.floor(Math.random()*5)*100+5,
+	armor:Math.floor(Math.random()*3)
 }
-var enemies = [];
+
+
 
 
 
@@ -110,8 +110,8 @@ function move(e){
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
 			player_position.x += 100;
 			draw_enemyright(enemy_position.x,enemy_position.y)
+			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.value
-			document.getElementById("p1").innerHTML = "New text!";
 
 		}
 				
@@ -130,8 +130,8 @@ function move(e){
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
 			player_position.x -= 100;
 			draw_enemyleft(enemy_position.x,enemy_position.y)
+			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.value
-			document.getElementById("p1").innerHTML = "New text!";
 
 		}
 
@@ -149,8 +149,8 @@ function move(e){
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
 			player_position.y -= 100;
 			draw_enemyup(enemy_position.x,enemy_position.y)
+			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.value
-			document.getElementById("p1").innerHTML = "New text!";
 		}	
 		if (player_position.y>500) {
 			player_position.y = 405;
@@ -166,8 +166,8 @@ function move(e){
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
 			player_position.y += 100;
 			draw_enemydown(enemy_position.x,enemy_position.y)
+			document.getElementById("p1").innerHTML = "enter ammo";
 			attack.value
-			document.getElementById("p1").innerHTML = "New text!";
 			}
 
 		if (player_position.y<0) {
@@ -181,22 +181,22 @@ function move(e){
 
 document.onkeydown = move;
 
-var level = {
-	1: 0,
-	2: 1000,
-	3: 2000,
-	4: 3000,
-	5: 4000}
-function get_level(points){
-    for (level in levels){
-       if (points < levels[level]){
-          return level - 1;
-       }
-    }
-}
-function getLevel(point){
-	var level = -1 + Math.sqrt(4 + points/20);
-	scoreDiv.innerHTML = "Score : " + points;
-	return Math.floor(level);
-}
+//var level = {
+//	1: 0,
+//	2: 1000,
+//	3: 2000,
+//	4: 3000,
+//	5: 4000}
+//function get_level(points){
+//    for (level in levels){
+//       if (points < levels[level]){
+//          return level - 1;
+//      }
+//    }
+//}
+//function getLevel(point){
+//	var level = -1 + Math.sqrt(4 + points/20);
+//	scoreDiv.innerHTML = "Score : " + points;
+//	return Math.floor(level);
+//}
 
