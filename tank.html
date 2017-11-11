@@ -6,12 +6,17 @@
   <body>
     <center>
       <img id='logo' src="photos/LOGOCODECAMP.png">
-    <div id = "score">Score: 0</div>
-    <div id = "ammo">Ammo : 20</div>
-    <div id = "health">Health: 10</div>
+      <div>
+    <span id = "score">Score: 0</span>
+    <span id = "ammo">Ammo : 20</span>
+    <span id = "health">Health: 10</span>
+    </div>
+    <div style="height: 50px;">
+      <span id="p1"></span>
+        <input type="text" id="attack" style="visibility: hidden;" />
+        </div>
       <canvas id="myCanvas" width="600" height="500" style="border:1px solid #000000;"></canvas>
-      <p id="p1"></p>
-    <input type="text" id="attack" style="visibility: hidden;" />
+
     </center>
     <script src="javatank.js"></script>
   </body>
