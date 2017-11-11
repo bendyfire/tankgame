@@ -30,8 +30,10 @@ var drawGrid = function(w, h) {
     drawGrid(500, 500);
 
 function draw_player(x, y) {
-	ctx.fillStyle = 'green';
-	ctx.fillRect(x, y, 90, 90);
+	var img = new Image();
+	img.src = 'photos/goodTanks.png';
+	ctx.drawImage(img,x,y)
+
 };
 
 function draw_enemy(x, y) {
@@ -39,10 +41,7 @@ function draw_enemy(x, y) {
 	ctx.fillRect(x, y, 90, 90);
 };
 
-var firstKill = prompt("")
-if (firstKill == "high b"){
-	alert("You Hit The Tank!")
-}
+
 
 draw_player(5,5)
 draw_enemy(enemy_position.x,enemy_position.y)
