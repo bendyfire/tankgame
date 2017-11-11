@@ -1,10 +1,14 @@
-
-
+var health = 10
+var ammo = 20
 var player_position = { x: 5, y: 5}
 var enemy_position = { x:Math.floor(Math.random()*5)*100+5, y:Math.floor(Math.random()*5)*100+5}
-//var enemies = [];
 
-//enemies.append(enemy)
+function enemy() {
+	this.x = 0
+	this.y = 0
+}
+var enemies = [];
+
 
 
 w = 600;
@@ -12,6 +16,8 @@ h = 400;
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var scoreDiv = document.getElementById("score")
+var attack = document.getElementById("attack");
+
 
 function background() {
 	var img = new Image();
@@ -78,7 +84,7 @@ function draw_enemy(x, y) {
 draw_player(5,5)
 
 //for (var i = 0; i < numEnemies; i++) Math.floor(Math.random()) {
-draw_enemy(enemy_position.x,enemy_position.y)
+
 //};
 
 function move(e){
@@ -88,10 +94,13 @@ function move(e){
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.x -= 100
-		draw_enemy(enemy_position.x,enemy_position.y)
-		console.log(player_position, enemy_position)
+
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
-			alert ('you got hit')
+			player_position.x += 100;
+			draw_enemy(enemy_position.x,enemy_position.y)
+			attack.value
+			document.getElementById("p1").innerHTML = "New text!";
+
 		}
 				
 		if (player_position.x<0) {
@@ -105,9 +114,13 @@ function move(e){
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.x += 100
-		draw_enemy(enemy_position.x,enemy_position.y)
+
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
-			alert ('you got hit')
+			player_position.x -= 100;
+			draw_enemy(enemy_position.x,enemy_position.y)
+			attack.value
+			document.getElementById("p1").innerHTML = "New text!";
+
 		}
 
 		if (player_position.x>500) {
@@ -120,9 +133,12 @@ function move(e){
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.y += 100
-		draw_enemy(enemy_position.x,enemy_position.y)
+
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
-			alert ('you got hit')
+			player_position.y -= 100;
+			draw_enemy(enemy_position.x,enemy_position.y)
+			attack.value
+			document.getElementById("p1").innerHTML = "New text!";
 		}	
 		if (player_position.y>500) {
 			player_position.y = 405;
@@ -135,10 +151,12 @@ function move(e){
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.y -= 100
-		draw_enemy(enemy_position.x,enemy_position.y)
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
-			alert ('you got hit')
-		}
+			player_position.y += 100;
+			draw_enemy(enemy_position.x,enemy_position.y)
+			attack.value
+			document.getElementById("p1").innerHTML = "New text!";
+			}
 
 		if (player_position.y<0) {
 			player_position.y = 5;
