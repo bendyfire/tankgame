@@ -7,6 +7,9 @@ w = 600;
 h = 400;
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+var scoreDiv = document.getElementById("score")
+
+
 
 var image = document.getElementById('source');
 
@@ -33,8 +36,10 @@ var drawGrid = function(w, h) {
     drawGrid(500, 500);
 
 function draw_player(x, y) {
-	ctx.fillStyle = 'green';
-	ctx.fillRect(x, y, 90, 90);
+	var img = new Image();
+	img.src = 'photos/goodTanks.png';
+	ctx.drawImage(img,x,y)
+
 };
 
 function draw_enemy(x, y) {
@@ -42,10 +47,7 @@ function draw_enemy(x, y) {
 	ctx.fillRect(x, y, 90, 90);
 };
 
-var firstKill = prompt("")
-if (firstKill == "high b"){
-	alert("You Hit The Tank!")
-}
+
 
 draw_player(5,5)
 draw_enemy(enemy_position.x,enemy_position.y)
@@ -100,3 +102,22 @@ function move(e){
 }
 
 document.onkeydown = move;
+
+var level = {
+	1: 0,
+	2: 1000,
+	3: 2000,
+	4: 3000,
+	5: 4000}
+function get_level(points){
+    for (level in levels){
+       if (points < levels[level]){
+          return level - 1;
+       }
+    }
+}
+function getLevel(point){
+	var level = -1 + Math.sqrt(4 + points/20);
+	scoreDiv.innerHTML = "Score : " + points;
+	return Math.floor(level);
+}
