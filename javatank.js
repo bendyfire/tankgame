@@ -4,7 +4,7 @@ var player_position = { x: 5, y: 5}
 var enemy_position = {
 	x:Math.floor(Math.random()*5)*100+5,
 	y:Math.floor(Math.random()*5)*100+5,
-	armor:Math.floor(Math.random()*4)
+	armor:Math.ceil(Math.random()*3)
 }
 
 
@@ -29,7 +29,7 @@ function background() {
 function teleport(){
 	enemy_position.x = Math.floor(Math.random()*5)*100+5
 	enemy_position.y = Math.floor(Math.random()*5)*100+5
-	enemy_position.armor = Math.floor(Math.random()*3) 
+	enemy_position.armor = Math.ceil(Math.random()*3) 
 }
 
 var image = document.getElementById('source');
@@ -122,6 +122,12 @@ function move(e){
 		console.log(attack.value)
 		if (attack.value >= enemy_position.armor){
 			alert("You killed the enemy tank!")
+			attack.value = ""
+			teleport()
+			score += 100
+			scoreDiv.innerHTML = 'Score: ' + score;
+
+
 			//trummpss wallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
 		}
 	}
