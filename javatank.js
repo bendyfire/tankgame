@@ -84,32 +84,49 @@ function draw_playerdown(x, y) {
 function draw_enemyleft(x, y) {
 	var img = new Image();
 	img.src = 'photos/badTank.png';
-	ctx.drawImage(img, x, y, 90, 90)};
-	function draw_enemyright(x, y) {
-		var img = new Image();
-		img.src = 'photos/badTank clone.png';
-		ctx.drawImage(img, x, y, 90, 90)};
-		function draw_enemyup(x, y) {
-			var img = new Image();
-			img.src = 'photos/New Piskel (7).png';
-			ctx.drawImage(img, x, y, 90, 90)};
-			function draw_enemydown(x, y) {
-				var img = new Image();
-				img.src = 'photos/New Piskel (8).png';
-				ctx.drawImage(img, x, y, 90, 90)};
+	ctx.drawImage(img, x, y, 90, 90)
+};
+
+function draw_enemyright(x, y) {
+	var img = new Image();
+	img.src = 'photos/badTank clone.png';
+	ctx.drawImage(img, x, y, 90, 90)
+};
+
+function draw_enemyup(x, y) {
+	var img = new Image();
+	img.src = 'photos/New Piskel (7).png';
+	ctx.drawImage(img, x, y, 90, 90)
+};
+
+function draw_enemydown(x, y) {
+	var img = new Image();
+	img.src = 'photos/New Piskel (8).png';
+	ctx.drawImage(img, x, y, 90, 90)
+};
 
 
 
-				draw_player(5,5)
+
+draw_player(5,5)
+
 
 //for (var i = 0; i < numEnemies; i++) Math.floor(Math.random()) {
 
 //};
 
+
 function move(e){
 	//left
-	if(e.keyCode == 37) { 
+	if(e.keyCode == 13) { 
+		console.log(attack.value)
+		if (attack.value >= enemy_position.armor){
+			alert("You killed the enemy tank!")
 
+		}
+	}
+
+	if(e.keyCode == 37) {
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
 		drawGrid(500,500);
 		player_position.x -= 100
@@ -132,16 +149,12 @@ function move(e){
 			player_position.x = 5;
 		}
 		draw_playerleft( player_position.x, player_position.y);
-
 	}
-
-
-
 
 	//right
 	if(e.keyCode == 39) {
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
-		drawGrid(500,500);
+		drawGrid(500, 500);
 		player_position.x += 100
 
 		if (player_position.x == enemy_position.x && player_position.y == enemy_position.y) {
@@ -163,7 +176,9 @@ function move(e){
 		draw_player( player_position.x, player_position.y);
 	}
 
-
+	if(e.keyCode == 13) {
+		//marrrrrrkkkkkkkkkkkkkkkkkkkk
+	}
 	//down
 	if(e.keyCode == 40) { 
 		ctx.clearRect(x, y, ctx.canvas.width, ctx.canvas.height);
@@ -213,12 +228,13 @@ function move(e){
 		}
 		draw_playerup( player_position.x, player_position.y);
 	}
+
+
 }
-	
 
 
 
-	document.onkeydown = move;
+document.onkeydown = move;
 
 
 
